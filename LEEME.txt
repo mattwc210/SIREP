@@ -1,0 +1,8 @@
+CÓMO PUBLICAR SIREP EN GITHUB
+1. Crea un repositorio nuevo en github.com (ej: sirep).
+2. Sube TODO el contenido de esta carpeta (README.md, index.html, assets/).
+3. Settings > Pages > Source: "Deploy from a branch" > rama main, carpeta /(root) > Save.
+4. En unos minutos tu web estará en https://TU-USUARIO.github.io/NOMBRE-REPO/
+5. En README.md cambia TU-USUARIO y TU-REPOSITORIO por los reales.
+6. Sube tus fotos a assets/img/ y descomenta las líneas marcadas con <!-- --> en README.md e index.html.
+7. Completa el voltaje medido en la prueba del osciloscopio.
