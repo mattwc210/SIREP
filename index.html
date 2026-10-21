@@ -225,13 +225,30 @@ function frame(){
   let v=energy*Math.sin(phase);if(rect)v=Math.abs(v);
   buf.push(v);buf.shift();
   ctx.clearRect(0,0,W,H);
+  
+  // Rejilla del osciloscopio
   ctx.strokeStyle='#17383F';ctx.lineWidth=1;ctx.beginPath();
   for(let x=0;x<=W;x+=W/10){ctx.moveTo(x,0);ctx.lineTo(x,H)}
   for(let y=0;y<=H;y+=H/6){ctx.moveTo(0,y);ctx.lineTo(W,y)}
   ctx.stroke();
+
+  // Eje central de referencia (0 Voltios)
   ctx.strokeStyle='#2F5057';ctx.beginPath();ctx.moveTo(0,H/2);ctx.lineTo(W,H/2);ctx.stroke();
+
+  // Dibujar la onda/señal
   ctx.strokeStyle=rect?'#F2B134':'#3FD0A0';ctx.lineWidth=2.5;ctx.beginPath();
   buf.forEach((s,i)=>{const y=H/2-s*(H*.42);i?ctx.lineTo(i*2,y):ctx.moveTo(0,y)});ctx.stroke();
+
+  // Nombres de los ejes
+  ctx.fillStyle='#9DB8B4';
+  ctx.font='bold 12px "Bricolage Grotesque", sans-serif';
+
+  // Eje Y - Voltaje
+  ctx.fillText('▲ V (Voltaje)',12,22);
+
+  // Eje X - Tiempo
+  ctx.fillText('t (Tiempo) ►',W-85,H-12);
+
   peak=Math.max(peak*.97,Math.abs(v));out.textContent=(peak*5).toFixed(1)+' V (simulado)';
   requestAnimationFrame(frame)
 }
